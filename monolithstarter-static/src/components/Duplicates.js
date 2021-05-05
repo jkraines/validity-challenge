@@ -11,11 +11,11 @@ class Duplicates extends Component {
     };
   }
 
+  // if component mounts, wait for response and update the state
   componentDidMount() {
     console.log("MOUNTING");
     this._isMounted = true;
     getDuplicatesMessage().then(response => {
-      console.log(response);
       if (this._isMounted)
         this.setState({
             duplicates: response.duplicates
@@ -33,6 +33,7 @@ class Duplicates extends Component {
     this._isMounted = false;
   }
 
+  // display duplicates and non-duplicates in two seperate arrays
   render() {
     return (
         <div>

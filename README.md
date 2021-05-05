@@ -1,8 +1,10 @@
-# MonolithStarter
-
-This project is intended to help developers quickly stand up a monolithic React/Spring Boot application. For the most part you can simply replace all instances of `monolithstarter` with appropriately-cased `yourprojectname` but make sure to do a Ctrl + F for `FIXME` to find places where more action is required.
-
-This readme assumes that you have completed the [newhire checklist](https://github.com/validityhq/we_the_engineers/tree/master/newhire).
+# Duplicate Checker
+This project was challenging for me because it involved a tech stack that I am completely new to. The largest challenge was getting it to run on my machines. My PC can't run docker, so that never happened.
+My mac was able to run it after a little while with some installation and subsequent debugging of that installation. The implementation of the app itself was easy, the starter was well laid out, and it was
+very straightforward to expand on it while maintaining a good project structure. As for my duplicate checking implementation, I used the levenshtein algorithm to compare the different records, with a certain
+threshold to determine whether or not two entries constituted a match. Altogether, my solution was decent, but could be improved by using levenshtein on each field in the entries rather than the entry as a whole.
+This will eliminate false positives from things such as commas, and lead to a more accurate result. I didn't implement this solution as I thought of it late, and had already exceeded the amount of time I had
+allotted to work on this challenge.
 
 ## Development Setup
 
