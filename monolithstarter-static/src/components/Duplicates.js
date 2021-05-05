@@ -3,20 +3,29 @@ import { getDuplicatesMessage } from "../actions/duplicatesAction";
 
 class Duplicates extends Component {
   constructor(props) {
+    console.log("CONSTRUCTOR");
     super(props);
     this.state = {
-      message: 'No message from server'
+        duplicates: [],
+        nonduplicates: []
     };
   }
 
   componentDidMount() {
+    console.log("MOUNTING");
     this._isMounted = true;
-    getDuplicatesMessage().then(message => {
+    getDuplicatesMessage().then(response => {
+      console.log(response);
       if (this._isMounted)
-        this.setState({message});
+        this.setState({
+            duplicates: response.duplicates
+        });
+        this.setState({
+            nonduplicates: response.nonduplicates
+        });
     }).catch(() => {
       if (this._isMounted)
-        this.setState({message: 'No response from the server...'});
+        console.log("Could not connect to server!");
     });
   }
 
@@ -26,7 +35,12 @@ class Duplicates extends Component {
 
   render() {
     return (
-      <div>{this.state.message}</div>
+        <div>
+            <h1>Duplicates</h1>
+            <pre>{JSON.stringify(this.state.duplicates, null, 2)}</pre>
+            <h1>Non-Duplicates</h1>
+            <pre>{JSON.stringify(this.state.nonduplicates, null, 2)}</pre>
+        </div>
     );
   }
 }
